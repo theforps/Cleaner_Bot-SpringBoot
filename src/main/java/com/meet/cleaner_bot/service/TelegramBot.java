@@ -42,6 +42,7 @@ public class TelegramBot extends TelegramLongPollingBot {
                 message.getText().contains("@")
         )
         {
+            System.out.println();
 
             Date messageDate = new Date(message.getDate() * 1000L); // Convert seconds to milliseconds
             LocalDate date = messageDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -51,6 +52,7 @@ public class TelegramBot extends TelegramLongPollingBot {
             deleteOldUserMessage(username, message.getChatId());
             deleteOldMessage(LocalDate.now(), message.getChatId());
 
+            System.out.println(history);
 
             JSON.put(new JSONObject(history));
 
